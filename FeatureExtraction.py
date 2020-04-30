@@ -95,5 +95,7 @@ def FeatureExtraction(fileName):
     FeatureDataSet[:,11] = temp[:,1]
     FeatureDataSet[:,12] = temp[:,2]
 
+    #Feature 14, 15, 15 Median Value of X,Y,Z coordinates
+    #Feature 16, 17, 18 Nearer to origin for each coordinate.
 
     return FeatureDataSet, labels
