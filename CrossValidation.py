@@ -14,6 +14,7 @@ def CrossValidation(PCAData, labels):
     deviationMat = utils.np.ndarray([60,60])
 
     for i in range(0,60):
+        print("Going on....Wait", i)
         for j in range(0,60):
             d = intervals[i]
             c = intervals[j]
