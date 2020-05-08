@@ -35,7 +35,9 @@ def DimensionalityReduction(selection, TrainPreProcessedData, trainLabels, TestP
         TrainRed_Dimension, TestRed_Dimension = LinearDiscriminantAnalysis(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, 4)
     elif(selection == 2):
         TrainRed_Dimension, TestRed_Dimension = FeatureSelection(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, 12)
-    
+    else:
+        TrainRed_Dimension, TestRed_Dimension = FeatureSelection(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, 12)
+
     #Mutual Info
 
     return TrainRed_Dimension, TestRed_Dimension
