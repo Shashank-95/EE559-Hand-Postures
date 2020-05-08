@@ -1,5 +1,5 @@
 # EE559- Mathematical-Pattern-Recognition
-# Motion-Capture-Based-Hand-Posture-Recognition
+# Motion Capture Based Hand Posture Recognition with Graphical User Interface
 ## Introduction:
 ___EE559, Professor: Keith Jenkins___  
 ___Authors: Shashank Nelamangala Sridhara & Aagam Manish Shah___  
