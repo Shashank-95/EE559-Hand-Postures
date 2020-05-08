@@ -8,7 +8,6 @@ import utils
 def FeatureExtraction(fileName):
     rawData = utils.np.genfromtxt(fileName, delimiter=',')
     m = rawData.shape[0]
-    print(rawData.shape)
     rawData = utils.np.delete(rawData, 0,0)
     rawData = utils.np.delete(rawData, 0,1)
 

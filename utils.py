@@ -3,9 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_selection import SelectKBest
 import pandas as pd
 import math
-from scipy import stats
+from scipy import stats 
 from mpl_toolkits import mplot3d
 from plotSVMBoundaries import plotSVMBoundaries
 from sklearn.model_selection import StratifiedKFold
