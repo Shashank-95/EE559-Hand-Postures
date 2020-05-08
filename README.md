@@ -17,9 +17,8 @@ e-mail: aagamman@usc.edu
 Dataset: http://archive.ics.uci.edu/ml/datasets/Motion+Capture+Hand+Postures
   
 ## Screenshots
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
-
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+![Graphical User Interface](/screenshots/GUI1.png)
+![Graphical User Interface](/screenshots/GUI2.png)
 
 ## Including:
     Feature Extraction
