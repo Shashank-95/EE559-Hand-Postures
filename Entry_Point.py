@@ -31,7 +31,7 @@ def new_window():
     global resultList
     root1 = Tk()
 
-    root1.title('MPR Project')
+    root1.title('EE559-Mathematical Pattern Recognition')
     myLabel = Label(root1, text="Motion Capture based Hand Posture Recognition", font='Helvetica 14 bold')
     myLabel.pack()
 
