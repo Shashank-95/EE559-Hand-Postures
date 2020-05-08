@@ -9,6 +9,7 @@ def CrossValidation(PCAData, labels):
     print(loou.get_n_splits(PCAData, classes, users))
 
     #Defining intervals for C and Gamma
+    #Thanks to numpy for logspace function
     intervals = utils.np.logspace(-3, 3, 60 ,endpoint = True)
     accuracyMat = utils.np.ndarray([60, 60])
     deviationMat = utils.np.ndarray([60,60])
@@ -34,6 +35,7 @@ def CrossValidation(PCAData, labels):
                 labels_train = classes[index_rest]
 
                 #SVM on train and validation set
+                #Thanks to sklearn for SVC interface
                 svmPred = utils.SVC(C=c, kernel = 'rbf', gamma = d)
                 svmPred.fit(train, labels_train)
                 accuracy= svmPred.score(validation, labels_validation)

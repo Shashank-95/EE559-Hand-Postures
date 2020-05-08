@@ -3,7 +3,7 @@
 import utils
 
 def SupportVectorMachine(Train, TrainLabels, Test, TestLabels, d, c):
-
+    #Thanks to sklearn for SVC interface
     svmPred = utils.SVC(gamma='auto',kernel='rbf')
     svmPred.fit(Train, TrainLabels)
     accuracy_train= svmPred.score(Train, TrainLabels)
@@ -17,6 +17,7 @@ def SupportVectorMachine(Train, TrainLabels, Test, TestLabels, d, c):
     return ('Support Vector Machine (RBF Kernel)',accuracy_train, accuracy, fscore)
 
 def NaiveBayes(Train, TrainLabels, Test, TestLabels):
+    #Thanks to sklearn for GaussianNB interface
     naive_bayes = utils.GaussianNB()
     predictions = naive_bayes.fit(Train, TrainLabels).predict(Test)
     accuracy_train= naive_bayes.score(Train, TrainLabels)
@@ -28,6 +29,7 @@ def NaiveBayes(Train, TrainLabels, Test, TestLabels):
     return ('Naive Bayes (Baseline)',accuracy_train, accuracy, fscore)
 
 def RandomForestClassifierWithXGBoost(Train, TrainLabels, Test, TestLabels):
+    #Thanks to sklearn for RandomForest interface
     RFModel = utils.RandomForestClassifier(n_estimators = 80, max_depth=100, random_state = 0)
     RFModel.fit(Train, TrainLabels)
     predictions = RFModel.predict(Test)
@@ -42,9 +44,9 @@ def RandomForestClassifierWithXGBoost(Train, TrainLabels, Test, TestLabels):
     return ('Random Forest', accuracy_train, accuracy, fscore)
 
 def KNearestNeighbors(Train, TrainLabels, Test, TestLabels):
-    K_vals = range(1,26)
-    accuracy = {}
-    accuracy_list =[]
+    #K_vals = range(1,26)
+    #accuracy = {}
+    #accuracy_list =[]
     # for i in K_vals:
     #     K_neighbor = utils.KNeighborsClassifier(n_neighbors =i)
     #     K_neighbor.fit(Train, TrainLabels)
@@ -53,6 +55,7 @@ def KNearestNeighbors(Train, TrainLabels, Test, TestLabels):
     #     accuracy_list.append(utils.metrics.accuracy_score(TestLabels, predictions))
 
     #Accuracy with auto values
+    #Thanks to sklearn for KNeighborsClassifier interface
     K_neighbor_new = utils.KNeighborsClassifier(algorithm='auto')
     K_neighbor_new.fit(Train, TrainLabels)
     predictions_new = K_neighbor_new.predict(Test)
@@ -98,6 +101,7 @@ def DiscriminantAnalysisQuadratic(Train, TrainLabels, Test, TestLabels):
 
 
 def Logistic_Regression(Train, TrainLabels, Test, TestLabels):
+    #Thanks to sklearn for Logistic Regression interface
     logistic_reg = utils.LogisticRegression(random_state=0, max_iter= 100, multi_class='ovr', solver='lbfgs').fit(Train, TrainLabels)
     predictions = logistic_reg.predict(Test)
     accuracy_train= logistic_reg.score(Train, TrainLabels)

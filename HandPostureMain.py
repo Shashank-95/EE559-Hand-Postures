@@ -16,9 +16,9 @@ from Training import Logistic_Regression
 import utils
 
 #Feature Extraction and Preprocessing
-def ExtractFeatures(selection):
-    trainFeatureDataSet, trainlabels = FeatureExtraction('/home/shashankns/Desktop/Masters/2nd_sem/EE559-MPR/559_final_project/Code/EE559-Hand-Postures/dataset/D_train.csv')
-    testFeatureDataSet, testLabels = FeatureExtraction('/home/shashankns/Desktop/Masters/2nd_sem/EE559-MPR/559_final_project/Code/EE559-Hand-Postures/dataset/D_test.csv')
+def ExtractFeatures(selection, train_filename, test_filename):
+    trainFeatureDataSet, trainlabels = FeatureExtraction(train_filename)
+    testFeatureDataSet, testLabels = FeatureExtraction(test_filename)
     
     if(selection == 0):
         TrainPreProcessedData, TestPreProcessedData = Standardization(trainFeatureDataSet, testFeatureDataSet)
@@ -28,13 +28,13 @@ def ExtractFeatures(selection):
     return TrainPreProcessedData, trainlabels, TestPreProcessedData, testLabels 
 
 #Feature Dimensionality
-def DimensionalityReduction(selection, TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, num_components):
+def DimensionalityReduction(selection, TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels):
     if(selection == 0):
-        TrainRed_Dimension, TestRed_Dimension = PrincipalComponentAnalysis(TrainPreProcessedData, TestPreProcessedData, num_components)
+        TrainRed_Dimension, TestRed_Dimension = PrincipalComponentAnalysis(TrainPreProcessedData, TestPreProcessedData, 12)
     elif(selection ==1):
-        TrainRed_Dimension, TestRed_Dimension = LinearDiscriminantAnalysis(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, num_components)
+        TrainRed_Dimension, TestRed_Dimension = LinearDiscriminantAnalysis(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, 4)
     elif(selection == 2):
-        TrainRed_Dimension, TestRed_Dimension = FeatureSelection(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, num_components)
+        TrainRed_Dimension, TestRed_Dimension = FeatureSelection(TrainPreProcessedData, trainLabels, TestPreProcessedData, testLabels, 12)
     
     #Mutual Info
 
@@ -73,6 +73,7 @@ def PlotPCAData(PCA_train, labels,PCA_test):
     z5 = z[class5_idx]
 
     plot = utils.plt.figure()
+    #Thanks to mpl_toolkits for mplt_3d function
     plot_3d = utils.plt.axes(projection = '3d')
 
     c1 = plot_3d.scatter(x1, y1, z1, c='r', marker='.', label='Class 1')
@@ -106,8 +107,13 @@ def Training(selection, TrainRed_Dimension, labels,TestRed_Dimension,testLabels)
     return resultList
 
 def MainFunction(dict):
-    TrainPreProcessedData, trainlabels, TestPreProcessedData, testLabels = ExtractFeatures(dict['preprocessing'])
-    PCA_train, PCA_test = DimensionalityReduction(dict['dimensionality_reduction'], TrainPreProcessedData, trainlabels[:,0], TestPreProcessedData,testLabels[:,0],3)
+    #Please change the filename accordingly
+    train_filename = '/home/shashankns/Desktop/Masters/2nd_sem/EE559-MPR/559_final_project/Code/EE559-Hand-Postures/dataset/D_train.csv'
+    test_filename = '/home/shashankns/Desktop/Masters/2nd_sem/EE559-MPR/559_final_project/Code/EE559-Hand-Postures/dataset/D_test.csv'
+
+    TrainPreProcessedData, trainlabels, TestPreProcessedData, testLabels = ExtractFeatures(dict['preprocessing'], train_filename, test_filename)
+    PCA_train, PCA_test = DimensionalityReduction(dict['dimensionality_reduction'], TrainPreProcessedData, trainlabels[:,0], TestPreProcessedData,testLabels[:,0])
+    #d,c = CrossValidation(PCA_train, trainlabels)
     #PlotPCAData(PCA_train, trainlabels[:,0],PCA_test)
     resultList = Training(dict['classifier'], PCA_train, trainlabels,PCA_test,testLabels)
     return resultList
