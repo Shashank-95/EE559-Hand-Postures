@@ -36,7 +36,6 @@ def new_window():
     myLabel.pack()
 
     mainframe = Frame(root1)
-    # mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
     mainframe.pack(pady=30, padx=80)
@@ -56,8 +55,8 @@ def new_window():
         listBox.insert("", "end", values=(name, train_accuracy, test_accuracy, f_score))
 
     size = len(resultList)
-    showScores = Button(mainframe, text="Main Menu", width=15, command=show_results)
-    showScores.grid(row=size+1, column=0)
+    showValues = Button(mainframe, text="Main Menu", width=25, command=show_results)
+    showValues.grid(row=size+1, column=0)
 
     root1.mainloop()
 
@@ -78,13 +77,10 @@ def submit_results():
     final_dict["classifier"] = c_index
     final_dict["dimensionality_reduction"] = d_index
 
-    #print(final_dict)
-    root.destroy()
-
     ''' call the model, set result variables '''
     resultList = []
     resultList = MainFunction(final_dict)
-    #resultList = [['Jim', '0.33', '1'], ['Dave', '0.67', '1'], ['James', '0.67', '1'], ['Eden', '0.5', '1']]
+    root.destroy()
     new_window()
 
 
@@ -103,7 +99,6 @@ def initialize():
     
     # grid layout
     mainframe = Frame(root)
-    # mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
     mainframe.pack(pady=30, padx=80)
@@ -129,13 +124,11 @@ def initialize():
     Label(mainframe, text="Classifier", font='Helvetica 12 bold').grid(row=1, column=3, padx=30, pady=20)
     classifier_menu.grid(row=2, column=3)
 
-
+    myLabel2 = Label(mainframe, text="Please wait for results to load on button click!", font='Helvetica 12 bold')
+    myLabel2.grid(row=3, column=2, columnspan=2)
 
     button = Button(mainframe, text="Show Results", command=submit_results)  # , highlightbackground='#3E4149')
     button.grid(row=3, column=4)
-    
-
-    ''' results '''
 
     root.mainloop()
 

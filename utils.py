@@ -7,7 +7,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis as QDA
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_selection import SelectKBest
-import pandas as pd
 import math
 from scipy import stats 
 from mpl_toolkits import mplot3d
@@ -16,7 +15,6 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import LeaveOneOut
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
-import xgboost as xgb
 from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsClassifier
