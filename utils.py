@@ -14,6 +14,9 @@ from plotSVMBoundaries import plotSVMBoundaries
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import LeaveOneOut
 from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.metrics import confusion_matrix    
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn import preprocessing

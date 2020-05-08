@@ -6,13 +6,16 @@
 import utils
 
 def FeatureExtraction(fileName):
+    #Thanks to numpy for genfromtext function which reads the csv file and convert it to nparray
     rawData = utils.np.genfromtxt(fileName, delimiter=',')
     m = rawData.shape[0]
+    #Thanks to numpy library
     rawData = utils.np.delete(rawData, 0,0)
     rawData = utils.np.delete(rawData, 0,1)
 
     
     #Create 13 features from the raw data
+    #Thanks to numpy library
     FeatureDataSet = utils.np.empty([m-1, 13])
 
     #Creating labels (userID and Classes)
@@ -23,11 +26,13 @@ def FeatureExtraction(fileName):
 
     #Feature 1: Number of recorded markers
     def feature_num(row_data):
+        #Thanks to numpy library for isnan function which checks for NaN values
         nan_array = utils.np.isnan(row_data)
         not_nan_array = ~ nan_array
         temp = row_data[not_nan_array]
         return (len(temp)-2)/3
     
+    #Thanks to numpy for apply_along_axis function
     FeatureDataSet[:,0] =utils.np.apply_along_axis( feature_num, axis=1, arr=rawData )
 
 
@@ -37,11 +42,13 @@ def FeatureExtraction(fileName):
         yVals = utils.np.array([row_data[3], row_data[6], row_data[9], row_data[12], row_data[15], row_data[18], row_data[21], row_data[24], row_data[27], row_data[30], row_data[33], row_data[36]])
         zVals = utils.np.array([row_data[4], row_data[7], row_data[10], row_data[13], row_data[16], row_data[19], row_data[22], row_data[25], row_data[28], row_data[31], row_data[34], row_data[37]])
 
+        #Thanks to numpy library for nanmeans function which calculates mean ignoring NaN values
         xMean = utils.np.nanmean(xVals)
         yMean = utils.np.nanmean(yVals)
         zMean = utils.np.nanmean(zVals)
         return xMean, yMean, zMean
 
+    #Thanks to numpy for apply_along_axis function
     temp =utils.np.apply_along_axis( feature_mean, axis=1, arr=rawData )
     FeatureDataSet[:,1] = temp[:,0]
     FeatureDataSet[:,2] = temp[:,1]
@@ -53,11 +60,13 @@ def FeatureExtraction(fileName):
         yVals = utils.np.array([row_data[3], row_data[6], row_data[9], row_data[12], row_data[15], row_data[18], row_data[21], row_data[24], row_data[27], row_data[30], row_data[33], row_data[36]])
         zVals = utils.np.array([row_data[4], row_data[7], row_data[10], row_data[13], row_data[16], row_data[19], row_data[22], row_data[25], row_data[28], row_data[31], row_data[34], row_data[37]])
 
+        #Thanks to numpy library for nanstd function which calculates standard deviation ignoring NaN values
         xStd = utils.np.nanstd(xVals)
         yStd = utils.np.nanstd(yVals)
         zStd = utils.np.nanstd(zVals)
         return xStd, yStd, zStd
 
+    #Thanks to numpy for apply_along_axis function
     temp =utils.np.apply_along_axis(feature_std, axis=1, arr=rawData)
     FeatureDataSet[:,4] = temp[:,0]
     FeatureDataSet[:,5] = temp[:,1]
@@ -69,11 +78,13 @@ def FeatureExtraction(fileName):
         yVals = utils.np.array([row_data[3], row_data[6], row_data[9], row_data[12], row_data[15], row_data[18], row_data[21], row_data[24], row_data[27], row_data[30], row_data[33], row_data[36]])
         zVals = utils.np.array([row_data[4], row_data[7], row_data[10], row_data[13], row_data[16], row_data[19], row_data[22], row_data[25], row_data[28], row_data[31], row_data[34], row_data[37]])
 
+        #Thanks to numpy library for nanmax function which calculates Maximum value ignoring NaN values
         xMax = utils.np.nanmax(xVals)
         yMax = utils.np.nanmax(yVals)
         zMax = utils.np.nanmax(zVals)
         return xMax, yMax, zMax
 
+    #Thanks to numpy for apply_along_axis function
     temp =utils.np.apply_along_axis(feature_max, axis=1, arr=rawData )
     FeatureDataSet[:,7] = temp[:,0]
     FeatureDataSet[:,8] = temp[:,1]
@@ -86,11 +97,13 @@ def FeatureExtraction(fileName):
         yVals = utils.np.array([row_data[3], row_data[6], row_data[9], row_data[12], row_data[15], row_data[18], row_data[21], row_data[24], row_data[27], row_data[30], row_data[33], row_data[36]])
         zVals = utils.np.array([row_data[4], row_data[7], row_data[10], row_data[13], row_data[16], row_data[19], row_data[22], row_data[25], row_data[28], row_data[31], row_data[34], row_data[37]])
 
+        #Thanks to numpy library for nanmin function which calculates Minimum ignoring NaN values
         xMin = utils.np.nanmin(xVals)
         yMin = utils.np.nanmin(yVals)
         zMin = utils.np.nanmin(zVals)
         return xMin, yMin, zMin
 
+    #Thanks to numpy for apply_along_axis function
     temp =utils.np.apply_along_axis(feature_min, axis=1, arr=rawData )
     FeatureDataSet[:,10] = temp[:,0]
     FeatureDataSet[:,11] = temp[:,1]

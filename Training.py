@@ -10,7 +10,6 @@ def SupportVectorMachine(Train, TrainLabels, Test, TestLabels, d, c):
     predictions = svmPred.predict(Test)
     accuracy = utils.metrics.accuracy_score(TestLabels, predictions)
     fscore = utils.f1_score(TestLabels, predictions, average='weighted')
-    
     print("SVM with RBF:  Train Accuracy- ", accuracy_train)
     print("SVM with RBF:  Test Accuracy - ",  accuracy, '  F1-Score-  ', fscore)    
     print("====================================================================\n")
@@ -37,7 +36,6 @@ def RandomForestClassifierWithXGBoost(Train, TrainLabels, Test, TestLabels):
     accuracy_train= RFModel.score(Train, TrainLabels)
     accuracy = utils.metrics.accuracy_score(TestLabels, predictions)
     fscore = utils.f1_score(TestLabels, predictions, average='weighted')
-  
     print("Random Forest:  Train Accuracy- ", accuracy_train)
     print("Random Forest:  Test Accuracy - ",  accuracy, '  F1-Score-  ', fscore)    
     print("====================================================================\n")
