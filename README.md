@@ -8,6 +8,7 @@ The Project is done towards the completion of EE559-Mathematical Pattern Recogni
 Author: Shashank Nelamangala Sridhara & Aagam Manish Shah
 University of Southern California  
 e-mail: nelamang@usc.edu 
+e-mail: aagamman@usc.edu
 
 Dataset: http://archive.ics.uci.edu/ml/datasets/Motion+Capture+Hand+Postures 
 
