@@ -9,8 +9,8 @@ ___Training and classification, Results displaying___
 
 The Project is done towards the completion of EE559-Mathematical Pattern Recognition Course.
   
-Author: Shashank Nelamangala Sridhara & Aagam Manish Shah
-University of Southern California  
+Author: Shashank Nelamangala Sridhara & Aagam Manish Shah.
+University of Southern California.  
 e-mail: nelamang@usc.edu 
 e-mail: aagamman@usc.edu
 
@@ -50,6 +50,12 @@ For Debian versions of Linux you have to install it manually by using the follow
   <dd>scipy</dd>
   <dd>mpl_toolkits</dd>
 <dl>
+
+## Usage
+Please make sure you have all the above libraries installed (including tkinter for GUI). Please change the path of train and test datasets in HandPosturesMain.py file in the MainFunction(). 
+Execute Entry_Point.py file in the Terminal, a GUI will pop up where you can select different Preprocessing, Dimensionality Reduction Techniques and obtain the results on different classifiers. Please feel free to contact us if you face any problem while executing the program.
+
+
 
 
 
